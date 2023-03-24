@@ -2,6 +2,7 @@
 
 # Set the name of the JSON file containing the list of CIDs and folder names
 filename="cids.json"
+# Format: [{"cid":"CID","folderName":"FolderName"}]
 
 # Read the JSON file line by line, assuming it contains an array of objects
 jq -c '.[]' "$filename" | while read -r line; do
