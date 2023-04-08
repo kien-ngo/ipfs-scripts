@@ -11,5 +11,6 @@ jq -c '.[]' "$filename" | while read -r line; do
     foldername="$(echo "$line" | jq -r '.folderName')"
 
     # Execute the command for each line
-    ipfs files cp /ipfs/"$(ipfs pin add "$cid" | cut -f 2 -d ' ')" "/$foldername"
+    echo "Pinning data for $foldername"
+    ipfs files cp /ipfs/"$(ipfs pin add "$cid" --progress | cut -f 2 -d ' ')" "/$foldername"
 done
