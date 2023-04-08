@@ -10,5 +10,6 @@ tail -n +2 "$filename" | while read -r line; do
     foldername="$(echo "$line" | cut -d ',' -f 2)"
 
     # Execute the command for each line
+    echo "Pinning data for $foldername"
     ipfs files cp /ipfs/"$(ipfs pin add "$cid" --progress| cut -f 2 -d ' ')" "/$foldername"
 done
